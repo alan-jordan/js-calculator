@@ -8,3 +8,7 @@
 // Then neds to work out what arithmetic operation to perform
 // Then the other numbers
 // then return the total to the html in the total div
+
+// document.addEventListener("click", function(){
+//     document.getElementById("demo").innerHTML = "Hello World";
+// });
