@@ -15,11 +15,17 @@
 // document.addEventListener("click", function(){
 //     document.getElementById("demo").innerHTML = "Hello World";
 // });
-element = document.getElementById("1");
-console.log(element);
 
-element.addEventListener("click", myFunction, true);
+//Loops from 0 to 9, adds an event listener for each.
+// Will have work work out assigning it to an array?
+
+for(var i = 0; i < 10; i++) {
+  element = document.getElementById(i);
+  element.addEventListener("click", myFunction);
+}
+
+
 
 function myFunction() {
-  window.alert("win");
+  console.log("win");;
 }
