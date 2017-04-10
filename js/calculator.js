@@ -9,6 +9,17 @@
 // Then the other numbers
 // then return the total to the html in the total div
 
+// Also needs to remove event listeners between clicking on numbers//
+// And operators
+
 // document.addEventListener("click", function(){
 //     document.getElementById("demo").innerHTML = "Hello World";
 // });
+element = document.getElementById("1");
+console.log(element);
+
+element.addEventListener("click", myFunction, true);
+
+function myFunction() {
+  window.alert("win");
+}
