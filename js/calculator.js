@@ -1,20 +1,6 @@
-// User story one
-// perform basic math using the calculator
-
-// Needs eventlisteners on all the numbers
-// And event listeners on all the other buttons
-// When the buttons are clicked
-// Needs to add the nuber to a variable
-// Then neds to work out what arithmetic operation to perform
-// Then the other numbers
-// then return the total to the html in the total div
-
-// Also needs to remove event listeners between clicking on numbers//
-// And operators
-
+// Basic variables
 var calculationString = "";
 var totalHtml = document.getElementsByClassName('total');
-
 
 //Loops from 0 to 9, adds an event listener for each.
 // Will have work work out assigning it to an array?
@@ -22,11 +8,9 @@ for(var i = 0; i < 10; i++) {
   document.getElementById(i).addEventListener("click", clickNumberButton);
 }
 
-// Can refactor this?
-// Add the ids to an array, loop through and add a listener?
-
 document.getElementById("ac").addEventListener("click", reset);
 document.getElementById("ce").addEventListener("click", reset);
+
 document.getElementById("divide").addEventListener("click", clickButton);
 document.getElementById("multiply").addEventListener("click", clickButton);
 document.getElementById("minus").addEventListener("click", clickButton);
@@ -35,7 +19,7 @@ document.getElementById("dot").addEventListener("click", clickNumberButton);
 
 document.getElementById("equals").addEventListener("click", equals);
 
-
+// Adds either a dot or the number clicked to the calculationString
 function clickNumberButton() {
   if(event.target.id === "dot") {
     calculationString += ".";
@@ -46,6 +30,7 @@ function clickNumberButton() {
   }
 }
 
+// Adds the mathematical operator to the calculationString
 function clickButton() {
   switch(event.target.id) {
     case 'divide':
@@ -67,12 +52,13 @@ function clickButton() {
   }
 }
 
-
+// Resets the calculationString and sets the total back to a string of zeroes
 function reset() {
   totalHtml[0].innerHTML = "0000000000000000";
   calculationString = "";
 }
 
+// Works out the total from the evaulated string
 function equals() {
   total = eval(calculationString);
   totalHtml[0].innerHTML = total;
