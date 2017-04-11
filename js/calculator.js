@@ -3,20 +3,19 @@ var calculationString = "";
 var totalHtml = document.getElementsByClassName('total');
 
 //Loops from 0 to 9, adds an event listener for each.
-// Will have work work out assigning it to an array?
 for(var i = 0; i < 10; i++) {
   document.getElementById(i).addEventListener("click", clickNumberButton);
 }
-
+// Event listeners for reset buttons
 document.getElementById("ac").addEventListener("click", reset);
 document.getElementById("ce").addEventListener("click", reset);
 
+// Event listeners for non number, non-reset buttons
 document.getElementById("divide").addEventListener("click", clickButton);
 document.getElementById("multiply").addEventListener("click", clickButton);
 document.getElementById("minus").addEventListener("click", clickButton);
 document.getElementById("plus").addEventListener("click", clickButton);
 document.getElementById("dot").addEventListener("click", clickNumberButton);
-
 document.getElementById("equals").addEventListener("click", equals);
 
 // Adds either a dot or the number clicked to the calculationString
