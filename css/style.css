@@ -11,6 +11,8 @@ body {
   text-decoration: none;
   border: none;
   font-size: 26px;
+  width: 10%;
+  height: 10%;
 }
 .button:hover {
   background-color:#222;
@@ -20,4 +22,7 @@ body {
 }
 .total {
   font-size: 32px;
+}
+.bigbutton {
+  width: 20%;
 }

@@ -12,60 +12,69 @@
 // Also needs to remove event listeners between clicking on numbers//
 // And operators
 
-// document.addEventListener("click", function(){
-//     document.getElementById("demo").innerHTML = "Hello World";
-// });
+var calculationString = "";
+var totalHtml = document.getElementsByClassName('total');
 
-
-// eval may well be my friend
-// eval(new String('2 + 2')); // returns a String object containing "2 + 2"
-// eval('2 + 2');             // returns 4
-
-var calculationArray = [];
 
 //Loops from 0 to 9, adds an event listener for each.
 // Will have work work out assigning it to an array?
 for(var i = 0; i < 10; i++) {
-  document.getElementById(i).addEventListener("click", clickButton);
+  document.getElementById(i).addEventListener("click", clickNumberButton);
 }
 
 // Can refactor this?
 // Add the ids to an array, loop through and add a listener?
 
-// document.getElementById("ac").addEventListener("click", clickButton);
-// document.getElementById("ce").addEventListener("click", clickButton);
-
+document.getElementById("ac").addEventListener("click", reset);
+document.getElementById("ce").addEventListener("click", reset);
 document.getElementById("divide").addEventListener("click", clickButton);
 document.getElementById("multiply").addEventListener("click", clickButton);
 document.getElementById("minus").addEventListener("click", clickButton);
 document.getElementById("plus").addEventListener("click", clickButton);
-// document.getElementById("dot").addEventListener("click", clickButton);
+document.getElementById("dot").addEventListener("click", clickNumberButton);
 
 document.getElementById("equals").addEventListener("click", equals);
 
-function clickButton() {
-  // Case loop to assign operators out of the strings?
-  switch(event.target.id) {
-    case 'divide':
-      calculationArray.push("/");
-      break;
-    case 'plus':
-      calculationArray.push("+");
-      break;
-    case 'minus':
-      calculationArray.push("-");
-      break;
-    case 'multiply':
-      calculationArray.push("*");
-      break;
-    default:
-      calculationArray.push(event.target.id);
+
+function clickNumberButton() {
+  if(event.target.id === "dot") {
+    calculationString += ".";
+    totalHtml[0].innerHTML = calculationString;
+  } else {
+    calculationString += event.target.id;
+    totalHtml[0].innerHTML = calculationString;
   }
 }
 
+function clickButton() {
+  switch(event.target.id) {
+    case 'divide':
+      calculationString += "/";
+      totalHtml[0].innerHTML = "/";
+      break;
+    case 'plus':
+      calculationString += "+";
+      totalHtml[0].innerHTML = "+";
+      break;
+    case 'minus':
+      calculationString += "-";
+      totalHtml[0].innerHTML = "-";
+      break;
+    case 'multiply':
+      calculationString += "*";
+      totalHtml[0].innerHTML = "*";
+      break;
+  }
+}
+
+
+function reset() {
+  totalHtml[0].innerHtml = "";
+  totalHtml[0].innerHtml = "00000000";
+  calculationString = "";
+}
+
 function equals() {
-  var calculationString = calculationArray.join(' ');
   total = eval(calculationString);
-  totalHtml = document.getElementsByClassName('total');
   totalHtml[0].innerHTML = total;
 }
