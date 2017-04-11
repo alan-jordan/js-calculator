@@ -61,5 +61,6 @@ function reset() {
 // Works out the total from the evaulated string
 function equals() {
   total = eval(calculationString);
+  calculationString = total;
   totalHtml[0].innerHTML = total;
 }
