@@ -69,7 +69,7 @@ function clickButton() {
 
 
 function reset() {
-  totalHtml[0].innerHTML = "00000000";
+  totalHtml[0].innerHTML = "0000000000000000";
   calculationString = "";
 }
 
