@@ -16,6 +16,11 @@
 //     document.getElementById("demo").innerHTML = "Hello World";
 // });
 
+
+// eval may well be my friend
+// eval(new String('2 + 2')); // returns a String object containing "2 + 2"
+// eval('2 + 2');             // returns 4
+
 var calculationArray = [];
 
 //Loops from 0 to 9, adds an event listener for each.
@@ -24,21 +29,43 @@ for(var i = 0; i < 10; i++) {
   document.getElementById(i).addEventListener("click", clickButton);
 }
 
-document.getElementById("ac").addEventListener("click", clickButton);
-document.getElementById("ce").addEventListener("click", clickButton);
+// Can refactor this?
+// Add the ids to an array, loop through and add a listener?
+
+// document.getElementById("ac").addEventListener("click", clickButton);
+// document.getElementById("ce").addEventListener("click", clickButton);
+
 document.getElementById("divide").addEventListener("click", clickButton);
 document.getElementById("multiply").addEventListener("click", clickButton);
-
 document.getElementById("minus").addEventListener("click", clickButton);
 document.getElementById("plus").addEventListener("click", clickButton);
-document.getElementById("dot").addEventListener("click", clickButton);
-document.getElementById("equals").addEventListener("click", clickButton);
+// document.getElementById("dot").addEventListener("click", clickButton);
 
-
-
-
+document.getElementById("equals").addEventListener("click", equals);
 
 function clickButton() {
   // Case loop to assign operators out of the strings?
-  calculationArray.push(event.target.id);
+  switch(event.target.id) {
+    case 'divide':
+      calculationArray.push("/");
+      break;
+    case 'plus':
+      calculationArray.push("+");
+      break;
+    case 'minus':
+      calculationArray.push("-");
+      break;
+    case 'multiply':
+      calculationArray.push("*");
+      break;
+    default:
+      calculationArray.push(event.target.id);
+  }
+}
+
+function equals() {
+  var calculationString = calculationArray.join(' ');
+  total = eval(calculationString);
+  totalHtml = document.getElementsByClassName('total');
+  totalHtml[0].innerHTML = total;
 }
