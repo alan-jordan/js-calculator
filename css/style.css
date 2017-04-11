@@ -13,6 +13,9 @@ body {
   border: none;
   font-size: 26px;
   border: 1px solid;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px teal;
   width: 23%;
   height: 23%;
   margin: 1% 0 1% 0;
@@ -25,9 +28,9 @@ body {
 }
 .total {
   font-size: 32px;
-  border: 1px dashed;
+  border: 3px solid;
   padding: 2% 2% 2% 2%;
-
+  box-shadow: 2px 2px teal;
 }
 .bigbutton {
   width: 48.5%;
