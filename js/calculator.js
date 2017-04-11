@@ -16,16 +16,29 @@
 //     document.getElementById("demo").innerHTML = "Hello World";
 // });
 
+var calculationArray = [];
+
 //Loops from 0 to 9, adds an event listener for each.
 // Will have work work out assigning it to an array?
-
 for(var i = 0; i < 10; i++) {
-  element = document.getElementById(i);
-  element.addEventListener("click", myFunction);
+  document.getElementById(i).addEventListener("click", clickButton);
 }
 
+document.getElementById("ac").addEventListener("click", clickButton);
+document.getElementById("ce").addEventListener("click", clickButton);
+document.getElementById("divide").addEventListener("click", clickButton);
+document.getElementById("multiply").addEventListener("click", clickButton);
+
+document.getElementById("minus").addEventListener("click", clickButton);
+document.getElementById("plus").addEventListener("click", clickButton);
+document.getElementById("dot").addEventListener("click", clickButton);
+document.getElementById("equals").addEventListener("click", clickButton);
 
 
-function myFunction() {
-  console.log("win");;
+
+
+
+function clickButton() {
+  // Case loop to assign operators out of the strings?
+  calculationArray.push(event.target.id);
 }
