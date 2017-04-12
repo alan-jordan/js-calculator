@@ -2,6 +2,27 @@
 var calculationString = "";
 var totalHtml = document.getElementsByClassName('total');
 
+
+// Features to add
+
+// Rounding total to x decimal places.
+
+// If dot is clicked, adds a zero in front it
+
+// Operator and equals buttons don't work till something is in the
+// calculationString
+
+// Once an operator is the final character in the calculationString
+// turn off listening on those buttons
+
+// Don't turn on listener on equals button till a full string that should
+// be calculatable exists. eg. number operator number.
+
+// Sounds?
+
+//
+
+
 //Loops from 0 to 9, adds an event listener for each.
 // Will have work work out assigning it to an array?
 for(var i = 0; i < 10; i++) {
