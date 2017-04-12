@@ -20,7 +20,8 @@ var totalHtml = document.getElementsByClassName('total');
 
 // Sounds?
 
-//
+// Better rendering ofthe current calculation, looks a bit munted right now
+
 
 
 //Loops from 0 to 9, adds an event listener for each.
@@ -42,7 +43,10 @@ document.getElementById("equals").addEventListener("click", equals);
 
 // Adds either a dot or the number clicked to the calculationString
 function clickNumberButton() {
-  if(event.target.id === "dot") {
+  if(event.target.id === "dot" && calculationString == "") {
+    calculationString += "0.";
+    totalHtml[0].innerHTML = calculationString;
+  } else if (event.target.id === "dot") {
     calculationString += ".";
     totalHtml[0].innerHTML = calculationString;
   } else {
