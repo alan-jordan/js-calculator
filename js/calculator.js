@@ -5,8 +5,6 @@ var operatorArray = ["*","/","+","-"];
 
 // Features to add
 
-// Rounding total to x decimal places.
-
 // Operator and equals buttons don't work till something is in the
 // calculationString
 
@@ -16,12 +14,8 @@ var operatorArray = ["*","/","+","-"];
 // Don't turn on listener on equals button till a full string that should
 // be calculatable exists. eg. number operator number.
 
-// Sounds?
-
-// Better rendering ofthe current calculation, looks a bit munted right now
 
 //Loops from 0 to 9, adds an event listener for each.
-// Will have work work out assigning it to an array?
 for(var i = 0; i < 10; i++) {
   document.getElementById(i).addEventListener("click", clickNumberButton);
 }
@@ -29,15 +23,26 @@ for(var i = 0; i < 10; i++) {
 document.getElementById("ac").addEventListener("click", reset);
 document.getElementById("ce").addEventListener("click", reset);
 
-document.getElementById("divide").addEventListener("click", clickButton);
-document.getElementById("multiply").addEventListener("click", clickButton);
-document.getElementById("minus").addEventListener("click", clickButton);
-document.getElementById("plus").addEventListener("click", clickButton);
-document.getElementById("dot").addEventListener("click", clickNumberButton);
+function addEventListenersOperators() {
+  document.getElementById("divide").addEventListener("click", clickButton);
+  document.getElementById("multiply").addEventListener("click", clickButton);
+  document.getElementById("minus").addEventListener("click", clickButton);
+  document.getElementById("plus").addEventListener("click", clickButton);
+  document.getElementById("dot").addEventListener("click", clickNumberButton);
+}
+
+function removeEventListenersOperators() {
+  document.getElementById("divide").removeEventListener("click", clickButton);
+  document.getElementById("multiply").removeEventListener("click", clickButton);
+  document.getElementById("minus").removeEventListener("click", clickButton);
+  document.getElementById("plus").removeEventListener("click", clickButton);
+  document.getElementById("dot").removeEventListener("click", clickNumberButton);
+}
+
+
 
 document.getElementById("equals").addEventListener("click", equals);
 
-// Adds either a dot or the number clicked to the calculationString alculationString.charAt(calculationString.length-1) === "*"
 function clickNumberButton() {
   if(event.target.id === "dot" && calculationString == "") {
     calculationString += "0.";
@@ -49,6 +54,7 @@ function clickNumberButton() {
     calculationString += ".";
     totalHtml[0].innerHTML = calculationString;
   } else {
+    addEventListenersOperators();
     calculationString += event.target.id;
     totalHtml[0].innerHTML = calculationString;
   }
@@ -58,18 +64,22 @@ function clickNumberButton() {
 function clickButton() {
   switch(event.target.id) {
     case 'divide':
+      removeEventListenersOperators();
       calculationString += "/";
       totalHtml[0].innerHTML = "/";
       break;
     case 'plus':
+      removeEventListenersOperators();
       calculationString += "+";
       totalHtml[0].innerHTML = "+";
       break;
     case 'minus':
+      removeEventListenersOperators();
       calculationString += "-";
       totalHtml[0].innerHTML = "-";
       break;
     case 'multiply':
+      removeEventListenersOperators();
       calculationString += "*";
       totalHtml[0].innerHTML = "*";
       break;
@@ -78,12 +88,14 @@ function clickButton() {
 
 // Resets the calculationString and sets the total back to a string of zeroes
 function reset() {
+  removeEventListenersOperators();
   totalHtml[0].innerHTML = "0000000000000000";
   calculationString = "";
 }
 
 // Works out the total from the evaulated string
 function equals() {
+  removeEventListenersOperators();
   total = eval(calculationString);
   total = round(total, 4);
   // Set the calculation string to total which allows chaining of calulations.
