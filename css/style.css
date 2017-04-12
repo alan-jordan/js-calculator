@@ -3,6 +3,9 @@ body {
   color: #00FF00;
   background-color: black;
 }
+h1 {
+  font-size: 30px;
+}
 
 .button {
   background-color: black;
