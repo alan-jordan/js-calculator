@@ -1,7 +1,7 @@
 // Basic variables
 var calculationString = "";
 var totalHtml = document.getElementsByClassName('total');
-
+var operatorArray = ["*","/","+","-"];
 
 // Features to add
 
@@ -20,8 +20,6 @@ var totalHtml = document.getElementsByClassName('total');
 
 // Better rendering ofthe current calculation, looks a bit munted right now
 
-
-
 //Loops from 0 to 9, adds an event listener for each.
 // Will have work work out assigning it to an array?
 for(var i = 0; i < 10; i++) {
@@ -39,9 +37,12 @@ document.getElementById("dot").addEventListener("click", clickNumberButton);
 
 document.getElementById("equals").addEventListener("click", equals);
 
-// Adds either a dot or the number clicked to the calculationString
+// Adds either a dot or the number clicked to the calculationString alculationString.charAt(calculationString.length-1) === "*"
 function clickNumberButton() {
   if(event.target.id === "dot" && calculationString == "") {
+    calculationString += "0.";
+    totalHtml[0].innerHTML = calculationString;
+  } else if (event.target.id === "dot" && operatorArray.includes(calculationString.charAt(calculationString.length-1))){
     calculationString += "0.";
     totalHtml[0].innerHTML = calculationString;
   } else if (event.target.id === "dot") {
