@@ -7,8 +7,6 @@ var totalHtml = document.getElementsByClassName('total');
 
 // Rounding total to x decimal places.
 
-// If dot is clicked, adds a zero in front it
-
 // Operator and equals buttons don't work till something is in the
 // calculationString
 
