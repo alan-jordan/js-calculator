@@ -3,22 +3,11 @@ var calculationString = "";
 var totalHtml = document.getElementsByClassName('total');
 var operatorArray = ["*","/","+","-"];
 
-// Features to add
-
-// Operator and equals buttons don't work till something is in the
-// calculationString
-
-// Once an operator is the final character in the calculationString
-// turn off listening on those buttons
-
-// Don't turn on listener on equals button till a full string that should
-// be calculatable exists. eg. number operator number.
-
-
 //Loops from 0 to 9, adds an event listener for each.
 for(var i = 0; i < 10; i++) {
   document.getElementById(i).addEventListener("click", clickNumberButton);
 }
+document.getElementById("dot").addEventListener("click", clickNumberButton);
 
 document.getElementById("ac").addEventListener("click", reset);
 document.getElementById("ce").addEventListener("click", reset);
@@ -28,7 +17,6 @@ function addEventListenersOperators() {
   document.getElementById("multiply").addEventListener("click", clickButton);
   document.getElementById("minus").addEventListener("click", clickButton);
   document.getElementById("plus").addEventListener("click", clickButton);
-  document.getElementById("dot").addEventListener("click", clickNumberButton);
 }
 
 function removeEventListenersOperators() {
@@ -36,7 +24,6 @@ function removeEventListenersOperators() {
   document.getElementById("multiply").removeEventListener("click", clickButton);
   document.getElementById("minus").removeEventListener("click", clickButton);
   document.getElementById("plus").removeEventListener("click", clickButton);
-  document.getElementById("dot").removeEventListener("click", clickNumberButton);
 }
 
 
@@ -95,7 +82,6 @@ function reset() {
 
 // Works out the total from the evaulated string
 function equals() {
-  removeEventListenersOperators();
   total = eval(calculationString);
   total = round(total, 4);
   // Set the calculation string to total which allows chaining of calulations.
