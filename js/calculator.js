@@ -3,15 +3,21 @@ var calculationString = "";
 var totalHtml = document.getElementsByClassName('total');
 var operatorArray = ["*","/","+","-"];
 
-//Loops from 0 to 9, adds an event listener for each.
-for(var i = 0; i < 10; i++) {
-  document.getElementById(i).addEventListener("click", clickNumberButton);
+// Initialises buttons when page loads
+window.onload = initialiseButtons();
+
+// Function to set up listeners on body load
+function initialiseButtons() {
+  for(var i = 0; i < 10; i++) {
+    document.getElementById(i).addEventListener("click", clickNumberButton);
+  }
+  document.getElementById("dot").addEventListener("click", clickNumberButton);
+  document.getElementById("ac").addEventListener("click", reset);
+  document.getElementById("ce").addEventListener("click", reset);
+  document.getElementById("equals").addEventListener("click", equals);
 }
-document.getElementById("dot").addEventListener("click", clickNumberButton);
 
-document.getElementById("ac").addEventListener("click", reset);
-document.getElementById("ce").addEventListener("click", reset);
-
+// Function to turn the operator buttons on
 function addEventListenersOperators() {
   document.getElementById("divide").addEventListener("click", clickButton);
   document.getElementById("multiply").addEventListener("click", clickButton);
@@ -19,6 +25,7 @@ function addEventListenersOperators() {
   document.getElementById("plus").addEventListener("click", clickButton);
 }
 
+// Function to turn the operator buttons off
 function removeEventListenersOperators() {
   document.getElementById("divide").removeEventListener("click", clickButton);
   document.getElementById("multiply").removeEventListener("click", clickButton);
@@ -26,10 +33,7 @@ function removeEventListenersOperators() {
   document.getElementById("plus").removeEventListener("click", clickButton);
 }
 
-
-
-document.getElementById("equals").addEventListener("click", equals);
-
+// Function to add a clicked number button to the calculationString
 function clickNumberButton() {
   if(event.target.id === "dot" && calculationString == "") {
     calculationString += "0.";
@@ -58,7 +62,7 @@ function clickButton() {
     case 'plus':
       removeEventListenersOperators();
       calculationString += "+";
-      totalHtml[0].innerHTML = "+";
+      totalHtml[0].innerHTML = "+"; 
       break;
     case 'minus':
       removeEventListenersOperators();
