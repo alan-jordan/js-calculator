@@ -51,28 +51,27 @@ function clickNumberButton() {
   }
 }
 
+// Adds the correct operator to the calculationString and adds it to the totalHTML
+function operatorButton(operator) {
+  removeEventListenersOperators();
+  calculationString += operator;
+  totalHtml[0].innerHTML = operator;
+}
+
 // Adds the mathematical operator to the calculationString
 function clickButton() {
   switch(event.target.id) {
     case 'divide':
-      removeEventListenersOperators();
-      calculationString += "/";
-      totalHtml[0].innerHTML = "/";
+      operatorButton("/");
       break;
     case 'plus':
-      removeEventListenersOperators();
-      calculationString += "+";
-      totalHtml[0].innerHTML = "+"; 
+      operatorButton("+");
       break;
     case 'minus':
-      removeEventListenersOperators();
-      calculationString += "-";
-      totalHtml[0].innerHTML = "-";
+      operatorButton("-");
       break;
     case 'multiply':
-      removeEventListenersOperators();
-      calculationString += "*";
-      totalHtml[0].innerHTML = "*";
+      operatorButton("*");
       break;
   }
 }
